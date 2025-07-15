@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Stop form from submitting
+
+            var client_name = document.getElementById("client_name").value.trim();
+            var mobile_no = document.getElementById("mobile_no").value.trim();
+            var address = document.getElementById("address").value.trim();
+            var ceremony = document.getElementById("ceremony").value;
+            var date = document.getElementById("date").value.trim();
+            var time = document.getElementById("time").value.trim();
+            var handmade_mehndi = document.getElementById("handmade_mehndi").value;
+            var photo = document.getElementById("photo").value;
+            var valid = true;
+
+            // Clear all errors first
+            document.querySelectorAll("span.error").forEach(el => el.innerHTML = "");
+
+            if (client_name === "") {
+                document.getElementById("error_client_name").innerHTML = "Enter Client Name";
+                valid = false;
+            }
+            if (mobile_no === "" || isNaN(mobile_no) || mobile_no.length !== 10) {
+                document.getElementById("error_mobile_no").innerHTML = "Enter valid 10-digit mobile number";
+                valid = false;
+            }
+            if (address === "") {
+                document.getElementById("error_address").innerHTML = "Enter Address";
+                valid = false;
+            }
+            if (ceremony === "Select") {
+                document.getElementById("error_ceremony").innerHTML = "Select Your Ceremony";
+                valid = false;
+            }
+            if (date === "") {
+                document.getElementById("error_date").innerHTML = "Enter Your Fixed Date";
+                valid = false;
+            }
+            if (time === "") {
+                document.getElementById("error_time").innerHTML = "Enter Time";
+                valid = false;
+            }
+            if (handmade_mehndi === "") {
+                document.getElementById("error_handmade").innerHTML = "Select Yes or No";
+                valid = false;
+            }
+            if (photo === "") {
+                document.getElementById("error_photo").innerHTML = "Select Yes or No";
+                valid = false;
+            }
+
+            if (valid) {
+                alert("Your Order Is Accepted Successfully..!!");
+                // You can submit the form manually here if needed
+            }
+        }
+    </script>
+
+    <style>
+        .bodydiv{
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240127/pngtree-green-leaf-with-textured-card-image_15615278.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 900px;
+            width: 100%;
+        }
+
+        .div1 {
+            margin-top: 20px;
+            margin-left: 400px;
+            width:650px;
+            height:auto;
+            background-image: url('https://img.freepik.com/premium-vector/mehndi-ceremony-romantic-couple_369928-102.jpg');
+            border-radius: 20px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        #position {
+            position: sticky;
+            top: 0;
+            background-color: antiquewhite;
+        }
+
+        select, input[type="text"] {
+            color:brown;
+            background-color: rgb(249, 249, 249);
+            width: 150px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+
+        span.error {
+            color: rgb(223, 6, 6);
+            font-size: 14px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="bodydiv"> 
+    
+    <div id="position">
+        <div style="background-color: rgb(87, 9, 9); width: 100%; height: 100px; display: flex;">
+            <table style="margin:auto; padding:10px">
+                <tr>
+                    <td>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDL2R6VDhpat62xLTDirJBJ_AG903mQiBBkA&s"
+                             width="80px" height="80px" style="border-radius:50%">
+                    </td>
+                    <td>
+                        <h1 style="color: goldenrod; text-align: center; font-family:inherit">Ink And Artistry</h1>
+                    </td>
+                </tr>
+            </table>
+
+            <div style="color:goldenrod; text-align: right; margin-left: auto; margin-right: 20px; align-self: center;">
+                <h3>Ink And Artistry<br>Contact:98XXXXXXX<br>65XXXXXXXX</h3>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="div1">
+        <center><span style="color: rgb(108, 22, 22); font-size: 35px;"><b>Book Now..!!</b></span></center>
+
+        <form onsubmit="validateForm(event)" style="color: rgb(14, 7, 7);">
+            <ul type="square">
+                <li><h3>Client Name:
+                    <input type="text" id="client_name">
+                    <span class="error" id="error_client_name"></span></h3></li>
+
+                <li><h3>Mobile No:
+                    <input type="text" id="mobile_no">
+                    <span class="error" id="error_mobile_no"></span></h3></li>
+
+                <li><h3>Address:
+                    <input type="text" id="address">
+                    <span class="error" id="error_address"></span></h3></li>
+
+                <li><h3>Choose Your Ceremony:
+                    <select id="ceremony">
+                        <option>Select</option>
+                        <option>Wedding</option>
+                        <option>Engagement</option>
+                        <option>Baby Shower</option>
+                        <option>Naming Ceremony</option>
+                        <option>Vatpornima</option>
+                        <option>Family Function</option>
+                        <option>Other Function</option>
+                    </select>
+                    <span class="error" id="error_ceremony"></span></h3></li>
+
+                <li><h3>Your Function Date:
+                    <input type="text" id="date">
+                    <span class="error" id="error_date"></span></h3></li>
+
+                <li><h3>Your Function Time:
+                    <input type="text" id="time">
+                    <select><option>AM</option><option>PM</option></select>
+                    <span class="error" id="error_time"></span></h3></li>
+
+                <li><h3>Do You Want Handmade Mehndi?<br>
+                    <select id="handmade_mehndi">
+                        <option value="">Select</option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <span class="error" id="error_handmade"></span></h3></li>
+
+                <li><h3>Do You Want Mehndi Photos?<br>
+                    <select id="photo">
+                        <option value="">Select</option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                    <span class="error" id="error_photo"></span></h3></li>
+            </ul>
+
+            <center>
+                <input type="submit" value="Submit" style="width: 90px; height: 40px; background-color: rgb(235, 233, 223); color: rgb(100, 77, 42); border-radius: 10px; font-size: 15px;">
+            </center>
+        </form>
+    </div>
+    <br><br>
+    <center><a href="mainpage.html"><button class="btn" style="font-size: 50px;">🔙</button></a></center>
+
+</div>   
+</body>
+</html>
